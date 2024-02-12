@@ -1,10 +1,21 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+
 def generate_dynamic_search_query(keywords):
-    # Selects the top N important keywords
-    important_keywords = sorted(keywords, key=lambda k: keywords.count(k), reverse=True)[:5]
+    # TF-IDF to calculate weights for each keyword
+    vectorizer = TfidfVectorizer()
+    tfidf_matrix = vectorizer.fit_transform([" ".join(keywords)])
 
-    # Constructs query segments based on important keywords
-    important_segments = [f'"{k}"' for k in important_keywords]
+    feature_names = vectorizer.get_feature_names_out()
 
-    final_query = ' AND '.join(important_segments)
+    # Mapping feature names to their TF-IDF scores
+    keyword_weights = dict(zip(feature_names, tfidf_matrix.toarray()[0]))
+
+    # Sorting keywords based on TF-IDF scores
+    sorted_keywords = sorted(keyword_weights, key=keyword_weights.get, reverse=True)
+
+    query_segments = [f'"{k}"' for k in sorted_keywords]
+
+    final_query = ' AND '.join(query_segments)
 
     return final_query
