@@ -4,9 +4,9 @@ from keywords import extract_keywords
 from searchquery import generate_dynamic_search_query
 from searchresultranker import rank_search_results
 
-openai.api_key = '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'
-google_api_key = 'AIzaSyCKJunNxqmxF-NUHXWBOdXkHqffNHF-S8s'
-google_cse_id = 'f73f963bbb8984659'
+openai.api_key = ''
+google_api_key = ''
+google_cse_id = ''
 
 
 
