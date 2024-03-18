@@ -21,7 +21,7 @@ def calculate_semantic_similarity(snippet, original_prompt, ai_answer):
 
 
 def get_page_rank(domain):
-    API_KEY = 'kwg0kkwkg8okkg48wk00gogso8wos888ws0wo0cc'
+    API_KEY = ''
     api_url = 'https://openpagerank.com/api/v1.0/getPageRank'
     headers = {'API-OPR': API_KEY}
     params = {'domains[]': domain}
